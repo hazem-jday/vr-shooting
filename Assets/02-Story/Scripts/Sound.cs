@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Sound : MonoBehaviour
+{
+    public AudioSource audioSource;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Call the PlayAudioAfterDelay function after 5 seconds
+        Invoke("PlayAudioAfterDelay", 2f);
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
+    void PlayAudioAfterDelay()
+    {
+        // Check if the audio source is not null before playing
+        if (audioSource != null)
+        {
+            // Play the audio
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Audio source is not assigned!");
+        }
+    }
+
+    public void StartLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+}
